@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -17,9 +18,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Component, Input, EventEmitter, trigger, state, transition, style, animate } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var router_1 = require("@angular/router");
 var BasePanelMenuItem = (function () {
     function BasePanelMenuItem(router) {
         this.router = router;
@@ -35,7 +37,7 @@ var BasePanelMenuItem = (function () {
         }
         if (item.command) {
             if (!item.eventEmitter) {
-                item.eventEmitter = new EventEmitter();
+                item.eventEmitter = new core_1.EventEmitter();
                 item.eventEmitter.subscribe(item.command);
             }
             item.eventEmitter.emit({
@@ -49,7 +51,7 @@ var BasePanelMenuItem = (function () {
     };
     return BasePanelMenuItem;
 }());
-export { BasePanelMenuItem };
+exports.BasePanelMenuItem = BasePanelMenuItem;
 var PanelMenuSub = (function (_super) {
     __extends(PanelMenuSub, _super);
     function PanelMenuSub(router) {
@@ -58,21 +60,21 @@ var PanelMenuSub = (function (_super) {
     return PanelMenuSub;
 }(BasePanelMenuItem));
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], PanelMenuSub.prototype, "item", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], PanelMenuSub.prototype, "expanded", void 0);
 PanelMenuSub = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-panelMenuSub',
         template: "\n        <ul class=\"ui-menu-list ui-helper-reset\" [style.display]=\"expanded ? 'block' : 'none'\">\n            <li *ngFor=\"let child of item.items\" class=\"ui-menuitem ui-corner-all\" [ngClass]=\"{'ui-menu-parent':child.items}\">\n                <a [href]=\"child.url||'#'\" class=\"ui-menuitem-link ui-corner-all\" \n                    [ngClass]=\"{'ui-menuitem-link-hasicon':child.icon&&child.items,'ui-state-disabled':child.disabled}\" \n                    (click)=\"handleClick($event,child)\" [attr.target]=\"child.target\">\n                    <span class=\"ui-panelmenu-icon fa fa-fw\" [ngClass]=\"{'fa-caret-right':!child.expanded,'fa-caret-down':child.expanded}\" *ngIf=\"child.items\"></span\n                    ><span class=\"ui-menuitem-icon fa fa-fw\" [ngClass]=\"child.icon\" *ngIf=\"child.icon\"></span\n                    ><span class=\"ui-menuitem-text\">{{child.label}}</span>\n                </a>\n                <p-panelMenuSub [item]=\"child\" [expanded]=\"child.expanded\" *ngIf=\"child.items\"></p-panelMenuSub>\n            </li>\n        </ul>\n    "
     }),
-    __metadata("design:paramtypes", [Router])
+    __metadata("design:paramtypes", [router_1.Router])
 ], PanelMenuSub);
-export { PanelMenuSub };
+exports.PanelMenuSub = PanelMenuSub;
 var PanelMenu = (function (_super) {
     __extends(PanelMenu, _super);
     function PanelMenu(router) {
@@ -109,48 +111,48 @@ var PanelMenu = (function (_super) {
     return PanelMenu;
 }(BasePanelMenuItem));
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Array)
 ], PanelMenu.prototype, "model", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], PanelMenu.prototype, "style", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], PanelMenu.prototype, "styleClass", void 0);
 PanelMenu = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-panelMenu',
         template: "\n        <div [class]=\"styleClass\" [ngStyle]=\"style\" [ngClass]=\"'ui-panelmenu ui-widget'\">\n            <div *ngFor=\"let item of model;let f=first;let l=last;\" class=\"ui-panelmenu-panel\">\n                <div tabindex=\"0\" [ngClass]=\"{'ui-widget ui-panelmenu-header ui-state-default':true,'ui-corner-top':f,'ui-corner-bottom':l&&!item.expanded,\n                    'ui-state-active':item.expanded,'ui-state-disabled':item.disabled}\">\n                    <a [href]=\"item.url||'#'\" [ngClass]=\"{'ui-panelmenu-headerlink-hasicon':item.icon}\" (click)=\"handleClick($event,item)\"\n                        [attr.target]=\"item.target\">\n                        <span *ngIf=\"item.items\" class=\"ui-panelmenu-icon fa\" [ngClass]=\"{'fa-caret-right':!item.expanded,'fa-caret-down':item.expanded}\"></span\n                        ><span class=\"ui-menuitem-icon fa\" [ngClass]=\"item.icon\" *ngIf=\"item.icon\"></span\n                        ><span class=\"ui-menuitem-text\">{{item.label}}</span>\n                    </a>\n                </div>\n                <div *ngIf=\"item.items\" class=\"ui-panelmenu-content-wrapper\" [@rootItem]=\"item.expanded ? 'visible' : 'hidden'\" \n                    [ngClass]=\"{'ui-panelmenu-content-wrapper-overflown': !item.expanded||animating}\">\n                    <div class=\"ui-panelmenu-content ui-widget-content\">\n                        <p-panelMenuSub [item]=\"item\" [expanded]=\"true\"></p-panelMenuSub>\n                    </div>\n                </div>\n            </div>\n        </div>\n    ",
         animations: [
-            trigger('rootItem', [
-                state('hidden', style({
+            core_1.trigger('rootItem', [
+                core_1.state('hidden', core_1.style({
                     height: '0px'
                 })),
-                state('visible', style({
+                core_1.state('visible', core_1.style({
                     height: '*'
                 })),
-                transition('visible => hidden', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
-                transition('hidden => visible', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
+                core_1.transition('visible => hidden', core_1.animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
+                core_1.transition('hidden => visible', core_1.animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
             ])
         ]
     }),
-    __metadata("design:paramtypes", [Router])
+    __metadata("design:paramtypes", [router_1.Router])
 ], PanelMenu);
-export { PanelMenu };
+exports.PanelMenu = PanelMenu;
 var PanelMenuModule = (function () {
     function PanelMenuModule() {
     }
     return PanelMenuModule;
 }());
 PanelMenuModule = __decorate([
-    NgModule({
-        imports: [CommonModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
         exports: [PanelMenu],
         declarations: [PanelMenu, PanelMenuSub]
     })
 ], PanelMenuModule);
-export { PanelMenuModule };
+exports.PanelMenuModule = PanelMenuModule;
 //# sourceMappingURL=panelmenu.js.map

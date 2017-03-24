@@ -193,10 +193,6 @@
     box-sizing: border-box;
 }
 
-.ui-megamenu-vertical > .ui-menubar-root-list > .ui-menuitem > .ui-menuitem-link > .ui-submenu-icon {
-    float: right;
-}
-
 /** PanelMenu **/
 .ui-panelmenu {
     width: auto;

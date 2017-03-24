@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,17 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Component, Input, Output, EventEmitter, forwardRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-export var SELECTBUTTON_VALUE_ACCESSOR = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(function () { return SelectButton; }),
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var forms_1 = require("@angular/forms");
+exports.SELECTBUTTON_VALUE_ACCESSOR = {
+    provide: forms_1.NG_VALUE_ACCESSOR,
+    useExisting: core_1.forwardRef(function () { return SelectButton; }),
     multi: true
 };
 var SelectButton = (function () {
     function SelectButton() {
-        this.onChange = new EventEmitter();
+        this.onChange = new core_1.EventEmitter();
         this.onModelChange = function () { };
         this.onModelTouched = function () { };
     }
@@ -74,52 +76,52 @@ var SelectButton = (function () {
     return SelectButton;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Array)
 ], SelectButton.prototype, "options", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Number)
 ], SelectButton.prototype, "tabindex", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], SelectButton.prototype, "multiple", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], SelectButton.prototype, "style", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], SelectButton.prototype, "styleClass", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], SelectButton.prototype, "disabled", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], SelectButton.prototype, "onChange", void 0);
 SelectButton = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-selectButton',
         template: "\n        <div [ngClass]=\"'ui-selectbutton ui-buttonset ui-widget ui-corner-all ui-buttonset-' + options.length\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div *ngFor=\"let option of options;\" class=\"ui-button ui-widget ui-state-default ui-button-text-only\"\n                [ngClass]=\"{'ui-state-active':isSelected(option), 'ui-state-disabled':disabled}\" (click)=\"onItemClick($event,option)\">\n                <span class=\"ui-button-text ui-c\">{{option.label}}</span>\n            </div>\n        </div>\n    ",
-        providers: [SELECTBUTTON_VALUE_ACCESSOR]
+        providers: [exports.SELECTBUTTON_VALUE_ACCESSOR]
     })
 ], SelectButton);
-export { SelectButton };
+exports.SelectButton = SelectButton;
 var SelectButtonModule = (function () {
     function SelectButtonModule() {
     }
     return SelectButtonModule;
 }());
 SelectButtonModule = __decorate([
-    NgModule({
-        imports: [CommonModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
         exports: [SelectButton],
         declarations: [SelectButton]
     })
 ], SelectButtonModule);
-export { SelectButtonModule };
+exports.SelectButtonModule = SelectButtonModule;
 //# sourceMappingURL=selectbutton.js.map

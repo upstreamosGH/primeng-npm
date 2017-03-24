@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,8 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Directive, ElementRef, HostListener } from '@angular/core';
-import { CommonModule } from '@angular/common';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
 var InputText = (function () {
     function InputText(el) {
         this.el = el;
@@ -26,13 +28,13 @@ var InputText = (function () {
     return InputText;
 }());
 __decorate([
-    HostListener('blur', ['$event']),
+    core_1.HostListener('blur', ['$event']),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], InputText.prototype, "onBlur", null);
 InputText = __decorate([
-    Directive({
+    core_1.Directive({
         selector: '[pInputText]',
         host: {
             '[class.ui-inputtext]': 'true',
@@ -42,20 +44,20 @@ InputText = __decorate([
             '[class.ui-state-filled]': 'filled'
         }
     }),
-    __metadata("design:paramtypes", [ElementRef])
+    __metadata("design:paramtypes", [core_1.ElementRef])
 ], InputText);
-export { InputText };
+exports.InputText = InputText;
 var InputTextModule = (function () {
     function InputTextModule() {
     }
     return InputTextModule;
 }());
 InputTextModule = __decorate([
-    NgModule({
-        imports: [CommonModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
         exports: [InputText],
         declarations: [InputText]
     })
 ], InputTextModule);
-export { InputTextModule };
+exports.InputTextModule = InputTextModule;
 //# sourceMappingURL=inputtext.js.map

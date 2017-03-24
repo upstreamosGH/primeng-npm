@@ -22,7 +22,7 @@ export declare class Calendar implements AfterViewInit, OnInit, OnDestroy, Contr
     inputStyleClass: string;
     placeholder: string;
     disabled: any;
-    dateFormat: string | string[];
+    dateFormat: string;
     inline: boolean;
     showOtherMonths: boolean;
     selectOtherMonths: boolean;

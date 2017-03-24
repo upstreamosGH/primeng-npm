@@ -9,6 +9,7 @@ export declare class OrderList implements AfterViewChecked, AfterContentInit {
     styleClass: string;
     listStyle: any;
     responsive: boolean;
+    metaKeySelection: boolean;
     onReorder: EventEmitter<any>;
     templates: QueryList<any>;
     itemTemplate: TemplateRef<any>;
@@ -16,11 +17,13 @@ export declare class OrderList implements AfterViewChecked, AfterContentInit {
     movedUp: boolean;
     movedDown: boolean;
     listContainer: any;
+    itemTouched: boolean;
     constructor(el: ElementRef, domHandler: DomHandler);
     ngAfterViewInit(): void;
     ngAfterContentInit(): void;
     ngAfterViewChecked(): void;
     onItemClick(event: any, item: any): void;
+    onItemTouchEnd(event: any): void;
     isSelected(item: any): boolean;
     findIndexInList(item: any, list: any): number;
     moveUp(event: any, listElement: any): void;

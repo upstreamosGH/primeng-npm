@@ -14,6 +14,7 @@ export declare class UITreeRow implements OnInit {
     isLeaf(): boolean;
     isSelected(): boolean;
     onRowClick(event: MouseEvent): void;
+    onRowTouchEnd(): void;
     resolveFieldData(data: any, field: string): any;
 }
 export declare class TreeTable {
@@ -29,10 +30,13 @@ export declare class TreeTable {
     styleClass: string;
     labelExpand: string;
     labelCollapse: string;
+    metaKeySelection: boolean;
     header: Header;
     footer: Footer;
     columns: QueryList<Column>;
+    rowTouched: boolean;
     onRowClick(event: MouseEvent, node: TreeNode): void;
+    onRowTouchEnd(): void;
     findIndexInSelection(node: TreeNode): number;
     propagateSelectionUp(node: TreeNode, select: boolean): void;
     propagateSelectionDown(node: TreeNode, select: boolean): void;

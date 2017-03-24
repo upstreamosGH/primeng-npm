@@ -1,6 +1,7 @@
 import { ElementRef, OnInit, AfterViewInit, AfterContentInit, AfterViewChecked, DoCheck, OnDestroy, Renderer, EventEmitter, QueryList, TemplateRef, IterableDiffers, ChangeDetectorRef } from '@angular/core';
 import { SelectItem } from '../common/api';
 import { DomHandler } from '../dom/domhandler';
+import { ObjectUtils } from '../utils/ObjectUtils';
 import { ControlValueAccessor } from '@angular/forms';
 export declare const DROPDOWN_VALUE_ACCESSOR: any;
 export declare class Dropdown implements OnInit, AfterViewInit, AfterContentInit, AfterViewChecked, DoCheck, OnDestroy, ControlValueAccessor {
@@ -8,6 +9,7 @@ export declare class Dropdown implements OnInit, AfterViewInit, AfterContentInit
     domHandler: DomHandler;
     renderer: Renderer;
     private cd;
+    objectUtils: ObjectUtils;
     options: SelectItem[];
     scrollHeight: string;
     filter: boolean;
@@ -22,6 +24,7 @@ export declare class Dropdown implements OnInit, AfterViewInit, AfterContentInit
     editable: boolean;
     appendTo: any;
     tabindex: number;
+    placeholder: string;
     onChange: EventEmitter<any>;
     onFocus: EventEmitter<any>;
     onBlur: EventEmitter<any>;
@@ -50,12 +53,13 @@ export declare class Dropdown implements OnInit, AfterViewInit, AfterContentInit
     itemClick: boolean;
     hoveredItem: any;
     selectedOptionUpdated: boolean;
-    constructor(el: ElementRef, domHandler: DomHandler, renderer: Renderer, differs: IterableDiffers, cd: ChangeDetectorRef);
+    constructor(el: ElementRef, domHandler: DomHandler, renderer: Renderer, differs: IterableDiffers, cd: ChangeDetectorRef, objectUtils: ObjectUtils);
     ngAfterContentInit(): void;
     ngOnInit(): void;
     ngDoCheck(): void;
     ngAfterViewInit(): void;
     readonly label: string;
+    readonly editableLabel: string;
     onItemClick(event: any, option: any): void;
     selectItem(event: any, option: any): void;
     ngAfterViewChecked(): void;

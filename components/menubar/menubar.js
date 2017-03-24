@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Component, ElementRef, Input, Renderer, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DomHandler } from '../dom/domhandler';
-import { Router } from '@angular/router';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var domhandler_1 = require("../dom/domhandler");
+var router_1 = require("@angular/router");
 var MenubarSub = (function () {
     function MenubarSub(domHandler, router) {
         this.domHandler = domHandler;
@@ -24,7 +26,7 @@ var MenubarSub = (function () {
         var nextElement = item.children[0].nextElementSibling;
         if (nextElement) {
             var sublist = nextElement.children[0];
-            sublist.style.zIndex = ++DomHandler.zindex;
+            sublist.style.zIndex = ++domhandler_1.DomHandler.zindex;
             if (this.root) {
                 sublist.style.top = this.domHandler.getOuterHeight(item.children[0]) + 'px';
                 sublist.style.left = '0px';
@@ -48,7 +50,7 @@ var MenubarSub = (function () {
         }
         if (item.command) {
             if (!item.eventEmitter) {
-                item.eventEmitter = new EventEmitter();
+                item.eventEmitter = new core_1.EventEmitter();
                 item.eventEmitter.subscribe(item.command);
             }
             item.eventEmitter.emit({
@@ -67,22 +69,22 @@ var MenubarSub = (function () {
     return MenubarSub;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], MenubarSub.prototype, "item", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], MenubarSub.prototype, "root", void 0);
 MenubarSub = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-menubarSub',
         template: "\n        <ul [ngClass]=\"{'ui-menubar-root-list ui-helper-clearfix':root, 'ui-widget-content ui-corner-all ui-helper-clearfix ui-menu-child ui-shadow':!root}\" class=\"ui-menu-list\"\n            (click)=\"listClick($event)\">\n            <template ngFor let-child [ngForOf]=\"(root ? item : item.items)\">\n                <li #item [ngClass]=\"{'ui-menuitem ui-widget ui-corner-all':true,'ui-menu-parent':child.items,'ui-menuitem-active':item==activeItem}\"\n                    (mouseenter)=\"onItemMouseEnter($event,item,child)\" (mouseleave)=\"onItemMouseLeave($event,item)\">\n                    <a #link [href]=\"child.url||'#'\" class=\"ui-menuitem-link ui-corner-all\" [attr.target]=\"child.target\"\n                        [ngClass]=\"{'ui-state-disabled':child.disabled}\" (click)=\"itemClick($event, child)\">\n                        <span class=\"ui-menuitem-icon fa fa-fw\" *ngIf=\"child.icon\" [ngClass]=\"child.icon\"></span>\n                        <span class=\"ui-menuitem-text\">{{child.label}}</span>\n                        <span class=\"ui-submenu-icon fa fa-fw\" *ngIf=\"child.items\" [ngClass]=\"{'fa-caret-down':root,'fa-caret-right':!root}\"></span>\n                    </a>\n                    <p-menubarSub class=\"ui-submenu\" [item]=\"child\" *ngIf=\"child.items\"></p-menubarSub>\n                </li>\n            </template>\n        </ul>\n    ",
-        providers: [DomHandler]
+        providers: [domhandler_1.DomHandler]
     }),
-    __metadata("design:paramtypes", [DomHandler, Router])
+    __metadata("design:paramtypes", [domhandler_1.DomHandler, router_1.Router])
 ], MenubarSub);
-export { MenubarSub };
+exports.MenubarSub = MenubarSub;
 var Menubar = (function () {
     function Menubar(el, domHandler, renderer) {
         this.el = el;
@@ -111,37 +113,37 @@ var Menubar = (function () {
     return Menubar;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Array)
 ], Menubar.prototype, "model", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], Menubar.prototype, "style", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Menubar.prototype, "styleClass", void 0);
 Menubar = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-menubar',
         template: "\n        <div [ngClass]=\"{'ui-menubar ui-menu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix':true}\" \n            [class]=\"styleClass\" [ngStyle]=\"style\">\n            <p-menubarSub [item]=\"model\" root=\"root\"></p-menubarSub>\n        </div>\n    ",
-        providers: [DomHandler]
+        providers: [domhandler_1.DomHandler]
     }),
-    __metadata("design:paramtypes", [ElementRef, DomHandler, Renderer])
+    __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer])
 ], Menubar);
-export { Menubar };
+exports.Menubar = Menubar;
 var MenubarModule = (function () {
     function MenubarModule() {
     }
     return MenubarModule;
 }());
 MenubarModule = __decorate([
-    NgModule({
-        imports: [CommonModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
         exports: [Menubar],
         declarations: [Menubar, MenubarSub]
     })
 ], MenubarModule);
-export { MenubarModule };
+exports.MenubarModule = MenubarModule;
 //# sourceMappingURL=menubar.js.map

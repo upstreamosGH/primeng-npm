@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,17 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Component, ElementRef, Input, Output, ContentChildren, QueryList, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ButtonModule } from '../button/button';
-import { SharedModule, PrimeTemplate } from '../common/shared';
-import { DomHandler } from '../dom/domhandler';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var button_1 = require("../button/button");
+var shared_1 = require("../common/shared");
+var domhandler_1 = require("../dom/domhandler");
 var OrderList = (function () {
     function OrderList(el, domHandler) {
         this.el = el;
         this.domHandler = domHandler;
         this.metaKeySelection = true;
-        this.onReorder = new EventEmitter();
+        this.onReorder = new core_1.EventEmitter();
     }
     OrderList.prototype.ngAfterViewInit = function () {
         this.listContainer = this.domHandler.findSingle(this.el.nativeElement, 'ul.ui-orderlist-list');
@@ -167,61 +169,61 @@ var OrderList = (function () {
     return OrderList;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Array)
 ], OrderList.prototype, "value", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], OrderList.prototype, "header", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], OrderList.prototype, "style", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], OrderList.prototype, "styleClass", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], OrderList.prototype, "listStyle", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], OrderList.prototype, "responsive", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], OrderList.prototype, "metaKeySelection", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], OrderList.prototype, "onReorder", void 0);
 __decorate([
-    ContentChildren(PrimeTemplate),
-    __metadata("design:type", QueryList)
+    core_1.ContentChildren(shared_1.PrimeTemplate),
+    __metadata("design:type", core_1.QueryList)
 ], OrderList.prototype, "templates", void 0);
 OrderList = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-orderList',
         template: "\n        <div [ngClass]=\"{'ui-orderlist ui-grid ui-widget':true,'ui-grid-responsive':responsive}\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div class=\"ui-grid-row\">\n                <div class=\"ui-orderlist-controls ui-grid-col-2\">\n                    <button type=\"button\" pButton icon=\"fa-angle-up\" (click)=\"moveUp($event,listelement)\"></button>\n                    <button type=\"button\" pButton icon=\"fa-angle-double-up\" (click)=\"moveTop($event,listelement)\"></button>\n                    <button type=\"button\" pButton icon=\"fa-angle-down\" (click)=\"moveDown($event,listelement)\"></button>\n                    <button type=\"button\" pButton icon=\"fa-angle-double-down\" (click)=\"moveBottom($event,listelement)\"></button>\n                </div>\n                <div class=\"ui-grid-col-10\">\n                    <div class=\"ui-orderlist-caption ui-widget-header ui-corner-top\" *ngIf=\"header\">{{header}}</div>\n                    <ul #listelement class=\"ui-widget-content ui-orderlist-list ui-corner-bottom\" [ngStyle]=\"listStyle\">\n                        <li *ngFor=\"let item of value\" class=\"ui-orderlist-item\"\n                            [ngClass]=\"{'ui-state-highlight':isSelected(item)}\" \n                            (click)=\"onItemClick($event,item)\" (touchend)=\"onItemTouchEnd($event)\">\n                            <template [pTemplateWrapper]=\"itemTemplate\" [item]=\"item\"></template>\n                        </li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n    ",
-        providers: [DomHandler]
+        providers: [domhandler_1.DomHandler]
     }),
-    __metadata("design:paramtypes", [ElementRef, DomHandler])
+    __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
 ], OrderList);
-export { OrderList };
+exports.OrderList = OrderList;
 var OrderListModule = (function () {
     function OrderListModule() {
     }
     return OrderListModule;
 }());
 OrderListModule = __decorate([
-    NgModule({
-        imports: [CommonModule, ButtonModule, SharedModule],
-        exports: [OrderList, SharedModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule, button_1.ButtonModule, shared_1.SharedModule],
+        exports: [OrderList, shared_1.SharedModule],
         declarations: [OrderList]
     })
 ], OrderListModule);
-export { OrderListModule };
+exports.OrderListModule = OrderListModule;
 //# sourceMappingURL=orderlist.js.map

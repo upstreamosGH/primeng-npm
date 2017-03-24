@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,15 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Component, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var router_1 = require("@angular/router");
 var Steps = (function () {
     function Steps(router) {
         this.router = router;
         this.activeIndex = 0;
         this.readonly = true;
-        this.activeIndexChange = new EventEmitter();
+        this.activeIndexChange = new core_1.EventEmitter();
     }
     Steps.prototype.itemClick = function (event, item, i) {
         if (this.readonly) {
@@ -31,7 +33,7 @@ var Steps = (function () {
         }
         if (item.command) {
             if (!item.eventEmitter) {
-                item.eventEmitter = new EventEmitter();
+                item.eventEmitter = new core_1.EventEmitter();
                 item.eventEmitter.subscribe(item.command);
             }
             item.eventEmitter.emit({
@@ -47,48 +49,48 @@ var Steps = (function () {
     return Steps;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Number)
 ], Steps.prototype, "activeIndex", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Array)
 ], Steps.prototype, "model", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], Steps.prototype, "readonly", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], Steps.prototype, "style", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Steps.prototype, "styleClass", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], Steps.prototype, "activeIndexChange", void 0);
 Steps = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-steps',
         template: "\n        <div [ngClass]=\"{'ui-steps ui-widget ui-helper-clearfix':true,'ui-steps-readonly':readonly}\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <ul role=\"tablist\">\n                <li *ngFor=\"let item of model; let i = index\" class=\"ui-steps-item\" #menuitem\n                    [ngClass]=\"{'ui-state-highlight':(i === activeIndex),'ui-state-default':(i !== activeIndex),\n                        'ui-state-disabled':(i !== activeIndex && readonly)}\">\n                    <a class=\"ui-menuitem-link\" (click)=\"itemClick($event, item, i)\" [attr.target]=\"item.target\">\n                        <span class=\"ui-steps-number\">{{i + 1}}</span>\n                        <span class=\"ui-steps-title\">{{item.label}}</span>\n                    </a>\n                </li>\n            </ul>\n        </div>\n    "
     }),
-    __metadata("design:paramtypes", [Router])
+    __metadata("design:paramtypes", [router_1.Router])
 ], Steps);
-export { Steps };
+exports.Steps = Steps;
 var StepsModule = (function () {
     function StepsModule() {
     }
     return StepsModule;
 }());
 StepsModule = __decorate([
-    NgModule({
-        imports: [CommonModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
         exports: [Steps],
         declarations: [Steps]
     })
 ], StepsModule);
-export { StepsModule };
+exports.StepsModule = StepsModule;
 //# sourceMappingURL=steps.js.map

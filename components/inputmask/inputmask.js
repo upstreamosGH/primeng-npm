@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 /*
     Port of jQuery MaskedInput by DigitalBush as a Native Angular2 Component in Typescript without jQuery
     https://github.com/digitalBush/jquery.maskedinput/
@@ -34,14 +36,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
     OTHER DEALINGS IN THE SOFTWARE.
 */
-import { NgModule, Component, ElementRef, Input, forwardRef, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DomHandler } from '../dom/domhandler';
-import { InputTextModule } from '../inputtext/inputtext';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-export var INPUTMASK_VALUE_ACCESSOR = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(function () { return InputMask; }),
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var domhandler_1 = require("../dom/domhandler");
+var inputtext_1 = require("../inputtext/inputtext");
+var forms_1 = require("@angular/forms");
+exports.INPUTMASK_VALUE_ACCESSOR = {
+    provide: forms_1.NG_VALUE_ACCESSOR,
+    useExisting: core_1.forwardRef(function () { return InputMask; }),
     multi: true
 };
 var InputMask = (function () {
@@ -51,7 +53,7 @@ var InputMask = (function () {
         this.type = 'text';
         this.slotChar = '_';
         this.autoClear = true;
-        this.onComplete = new EventEmitter();
+        this.onComplete = new core_1.EventEmitter();
         this.onModelChange = function () { };
         this.onModelTouched = function () { };
     }
@@ -461,89 +463,89 @@ var InputMask = (function () {
     return InputMask;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], InputMask.prototype, "mask", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], InputMask.prototype, "type", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], InputMask.prototype, "slotChar", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], InputMask.prototype, "autoClear", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], InputMask.prototype, "style", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], InputMask.prototype, "styleClass", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], InputMask.prototype, "placeholder", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Number)
 ], InputMask.prototype, "size", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Number)
 ], InputMask.prototype, "maxlength", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], InputMask.prototype, "tabindex", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], InputMask.prototype, "disabled", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], InputMask.prototype, "readonly", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], InputMask.prototype, "unmask", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], InputMask.prototype, "name", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], InputMask.prototype, "onComplete", void 0);
 InputMask = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-inputMask',
         template: "<input pInputText [attr.type]=\"type\" [attr.name]=\"name\" [value]=\"value||''\" [ngStyle]=\"style\" [ngClass]=\"styleClass\" [attr.placeholder]=\"placeholder\"\n        [attr.size]=\"size\" [attr.maxlength]=\"maxlength\" [attr.tabindex]=\"tabindex\" [disabled]=\"disabled\" [readonly]=\"readonly\"\n        (focus)=\"onFocus($event)\" (blur)=\"onBlur($event)\" (keydown)=\"onKeyDown($event)\" (keypress)=\"onKeyPress($event)\"\n        (input)=\"onInput($event)\" (paste)=\"handleInputChange($event)\">",
         host: {
             '[class.ui-inputwrapper-filled]': 'filled',
             '[class.ui-inputwrapper-focus]': 'focus'
         },
-        providers: [INPUTMASK_VALUE_ACCESSOR, DomHandler]
+        providers: [exports.INPUTMASK_VALUE_ACCESSOR, domhandler_1.DomHandler]
     }),
-    __metadata("design:paramtypes", [ElementRef, DomHandler])
+    __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
 ], InputMask);
-export { InputMask };
+exports.InputMask = InputMask;
 var InputMaskModule = (function () {
     function InputMaskModule() {
     }
     return InputMaskModule;
 }());
 InputMaskModule = __decorate([
-    NgModule({
-        imports: [CommonModule, InputTextModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule, inputtext_1.InputTextModule],
         exports: [InputMask],
         declarations: [InputMask]
     })
 ], InputMaskModule);
-export { InputMaskModule };
+exports.InputMaskModule = InputMaskModule;
 //# sourceMappingURL=inputmask.js.map

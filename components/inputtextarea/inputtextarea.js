@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,8 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Directive, ElementRef, HostListener, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
 var InputTextarea = (function () {
     function InputTextarea(el) {
         this.el = el;
@@ -49,37 +51,37 @@ var InputTextarea = (function () {
     return InputTextarea;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], InputTextarea.prototype, "autoResize", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Number)
 ], InputTextarea.prototype, "rows", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Number)
 ], InputTextarea.prototype, "cols", void 0);
 __decorate([
-    HostListener('focus', ['$event']),
+    core_1.HostListener('focus', ['$event']),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], InputTextarea.prototype, "onFocus", null);
 __decorate([
-    HostListener('blur', ['$event']),
+    core_1.HostListener('blur', ['$event']),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], InputTextarea.prototype, "onBlur", null);
 __decorate([
-    HostListener('keyup', ['$event']),
+    core_1.HostListener('keyup', ['$event']),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], InputTextarea.prototype, "onKeyup", null);
 InputTextarea = __decorate([
-    Directive({
+    core_1.Directive({
         selector: '[pInputTextarea]',
         host: {
             '[class.ui-inputtext]': 'true',
@@ -91,20 +93,20 @@ InputTextarea = __decorate([
             '[attr.cols]': 'cols'
         }
     }),
-    __metadata("design:paramtypes", [ElementRef])
+    __metadata("design:paramtypes", [core_1.ElementRef])
 ], InputTextarea);
-export { InputTextarea };
+exports.InputTextarea = InputTextarea;
 var InputTextareaModule = (function () {
     function InputTextareaModule() {
     }
     return InputTextareaModule;
 }());
 InputTextareaModule = __decorate([
-    NgModule({
-        imports: [CommonModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
         exports: [InputTextarea],
         declarations: [InputTextarea]
     })
 ], InputTextareaModule);
-export { InputTextareaModule };
+exports.InputTextareaModule = InputTextareaModule;
 //# sourceMappingURL=inputtextarea.js.map

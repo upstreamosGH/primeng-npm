@@ -13,6 +13,7 @@ export declare class DataGrid implements AfterViewInit, AfterContentInit, DoChec
     style: any;
     styleClass: string;
     paginatorPosition: string;
+    onPage: EventEmitter<any>;
     header: any;
     footer: any;
     templates: QueryList<any>;

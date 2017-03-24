@@ -1,4 +1,4 @@
-import { ElementRef, OnInit, AfterViewInit, AfterViewChecked, DoCheck, OnDestroy, IterableDiffers, TemplateRef, QueryList, Renderer } from '@angular/core';
+import { ElementRef, OnInit, AfterViewInit, AfterViewChecked, EventEmitter, DoCheck, OnDestroy, IterableDiffers, TemplateRef, QueryList, Renderer } from '@angular/core';
 import { DomHandler } from '../dom/domhandler';
 export declare class Carousel implements OnInit, AfterViewChecked, AfterViewInit, DoCheck, OnDestroy {
     el: ElementRef;
@@ -17,6 +17,7 @@ export declare class Carousel implements OnInit, AfterViewChecked, AfterViewInit
     pageLinks: number;
     style: any;
     styleClass: string;
+    onPage: EventEmitter<any>;
     templates: QueryList<any>;
     itemTemplate: TemplateRef<any>;
     container: any;

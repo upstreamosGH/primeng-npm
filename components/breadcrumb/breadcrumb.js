@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Component, Input, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var router_1 = require("@angular/router");
 var Breadcrumb = (function () {
     function Breadcrumb(router) {
         this.router = router;
@@ -24,7 +26,7 @@ var Breadcrumb = (function () {
         }
         if (item.command) {
             if (!item.eventEmitter) {
-                item.eventEmitter = new EventEmitter();
+                item.eventEmitter = new core_1.EventEmitter();
                 item.eventEmitter.subscribe(item.command);
             }
             item.eventEmitter.emit({
@@ -54,40 +56,40 @@ var Breadcrumb = (function () {
     return Breadcrumb;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Array)
 ], Breadcrumb.prototype, "model", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], Breadcrumb.prototype, "style", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Breadcrumb.prototype, "styleClass", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], Breadcrumb.prototype, "home", void 0);
 Breadcrumb = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-breadcrumb',
         template: "\n        <div [class]=\"styleClass\" [ngStyle]=\"style\" [ngClass]=\"'ui-breadcrumb ui-widget ui-widget-header ui-helper-clearfix ui-corner-all'\">\n            <ul>\n                <li class=\"fa fa-home\" (click)=\"onHomeClick($event)\"></li>\n                <li class=\"ui-breadcrumb-chevron fa fa-chevron-right\" *ngIf=\"model\"></li>\n                <template ngFor let-item let-end=\"last\" [ngForOf]=\"model\">\n                    <li role=\"menuitem\">\n                        <a [href]=\"item.url||'#'\" class=\"ui-menuitem-link\" (click)=\"itemClick($event, item)\" \n                            [ngClass]=\"{'ui-state-disabled':item.disabled}\" [attr.target]=\"item.target\">\n                            <span class=\"ui-menuitem-text\">{{item.label}}</span>\n                        </a>\n                    </li>\n                    <li class=\"ui-breadcrumb-chevron fa fa-chevron-right\" *ngIf=\"!end\"></li>\n                </template>\n            </ul>\n        </div>\n    "
     }),
-    __metadata("design:paramtypes", [Router])
+    __metadata("design:paramtypes", [router_1.Router])
 ], Breadcrumb);
-export { Breadcrumb };
+exports.Breadcrumb = Breadcrumb;
 var BreadcrumbModule = (function () {
     function BreadcrumbModule() {
     }
     return BreadcrumbModule;
 }());
 BreadcrumbModule = __decorate([
-    NgModule({
-        imports: [CommonModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
         exports: [Breadcrumb],
         declarations: [Breadcrumb]
     })
 ], BreadcrumbModule);
-export { BreadcrumbModule };
+exports.BreadcrumbModule = BreadcrumbModule;
 //# sourceMappingURL=breadcrumb.js.map

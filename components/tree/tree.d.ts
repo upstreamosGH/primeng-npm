@@ -23,6 +23,7 @@ export declare class UITreeNode implements OnInit {
     isLeaf(): boolean;
     toggle(event: Event): void;
     onNodeClick(event: MouseEvent): void;
+    onNodeTouchEnd(): void;
     onNodeRightClick(event: MouseEvent): void;
     isSelected(): boolean;
 }
@@ -40,11 +41,14 @@ export declare class Tree implements AfterContentInit {
     styleClass: string;
     contextMenu: any;
     layout: string;
+    metaKeySelection: boolean;
     templates: QueryList<any>;
     templateMap: any;
+    nodeTouched: boolean;
     readonly horizontal: boolean;
     ngAfterContentInit(): void;
     onNodeClick(event: MouseEvent, node: TreeNode): void;
+    onNodeTouchEnd(): void;
     onNodeRightClick(event: MouseEvent, node: TreeNode): void;
     findIndexInSelection(node: TreeNode): number;
     propagateSelectionUp(node: TreeNode, select: boolean): void;

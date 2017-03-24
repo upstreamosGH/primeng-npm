@@ -13,6 +13,8 @@ export declare class DataList implements AfterViewInit, AfterContentInit, DoChec
     style: any;
     styleClass: string;
     paginatorPosition: string;
+    emptyMessage: string;
+    onPage: EventEmitter<any>;
     header: any;
     footer: any;
     templates: QueryList<any>;

@@ -5,18 +5,19 @@ export declare class Captcha implements AfterViewInit {
     theme: string;
     type: string;
     size: string;
-    tabIndex: number;
+    tabindex: number;
     language: string;
     onResponse: EventEmitter<any>;
     onExpire: EventEmitter<any>;
     el: ElementRef;
-    captcha: any;
+    private _instance;
     constructor(_zone: NgZone);
     ngAfterViewInit(): void;
+    init(): void;
     reset(): void;
     getResponse(): String;
-    private recaptchaCallback(response);
-    private recaptchaExpiredCallback();
+    recaptchaCallback(response: string): void;
+    recaptchaExpiredCallback(): void;
     ngOnDestroy(): void;
 }
 export declare class CaptchaModule {

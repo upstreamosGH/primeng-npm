@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,16 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Component, Input, Output, EventEmitter, trigger, state, transition, style, animate, ElementRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SharedModule } from '../common/shared';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var shared_1 = require("../common/shared");
 var Panel = (function () {
     function Panel(el) {
         this.el = el;
         this.collapsed = false;
-        this.collapsedChange = new EventEmitter();
-        this.onBeforeToggle = new EventEmitter();
-        this.onAfterToggle = new EventEmitter();
+        this.collapsedChange = new core_1.EventEmitter();
+        this.onBeforeToggle = new core_1.EventEmitter();
+        this.onAfterToggle = new core_1.EventEmitter();
     }
     Panel.prototype.toggle = function (event) {
         var _this = this;
@@ -49,68 +51,68 @@ var Panel = (function () {
     return Panel;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], Panel.prototype, "toggleable", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Panel.prototype, "header", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], Panel.prototype, "collapsed", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], Panel.prototype, "style", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Panel.prototype, "styleClass", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], Panel.prototype, "collapsedChange", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], Panel.prototype, "onBeforeToggle", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], Panel.prototype, "onAfterToggle", void 0);
 Panel = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-panel',
         template: "\n        <div [ngClass]=\"'ui-panel ui-widget ui-widget-content ui-corner-all'\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div class=\"ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all\">\n                <span class=\"ui-panel-title\" *ngIf=\"header\">{{header}}</span>\n                <ng-content select=\"p-header\"></ng-content>\n                <a *ngIf=\"toggleable\" class=\"ui-panel-titlebar-icon ui-panel-titlebar-toggler ui-corner-all ui-state-default\" href=\"#\"\n                    (click)=\"toggle($event)\">\n                    <span class=\"fa fa-fw\" [ngClass]=\"{'fa-minus': !collapsed,'fa-plus':collapsed}\"></span>\n                </a>\n            </div>\n            <div class=\"ui-panel-content-wrapper\" [@panelContent]=\"collapsed ? 'hidden' : 'visible'\" \n                [ngClass]=\"{'ui-panel-content-wrapper-overflown': collapsed||animating}\">\n                <div class=\"ui-panel-content ui-widget-content\">\n                    <ng-content></ng-content>\n                </div>\n            </div>\n        </div>\n    ",
         animations: [
-            trigger('panelContent', [
-                state('hidden', style({
+            core_1.trigger('panelContent', [
+                core_1.state('hidden', core_1.style({
                     height: '0px'
                 })),
-                state('visible', style({
+                core_1.state('visible', core_1.style({
                     height: '*'
                 })),
-                transition('visible => hidden', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
-                transition('hidden => visible', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
+                core_1.transition('visible => hidden', core_1.animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
+                core_1.transition('hidden => visible', core_1.animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
             ])
         ]
     }),
-    __metadata("design:paramtypes", [ElementRef])
+    __metadata("design:paramtypes", [core_1.ElementRef])
 ], Panel);
-export { Panel };
+exports.Panel = Panel;
 var PanelModule = (function () {
     function PanelModule() {
     }
     return PanelModule;
 }());
 PanelModule = __decorate([
-    NgModule({
-        imports: [CommonModule],
-        exports: [Panel, SharedModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
+        exports: [Panel, shared_1.SharedModule],
         declarations: [Panel]
     })
 ], PanelModule);
-export { PanelModule };
+exports.PanelModule = PanelModule;
 //# sourceMappingURL=panel.js.map

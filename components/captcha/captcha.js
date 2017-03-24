@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,8 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Component, EventEmitter, Input, NgZone, Output, ViewChild, ElementRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
 var Captcha = (function () {
     function Captcha(_zone) {
         this._zone = _zone;
@@ -18,8 +20,8 @@ var Captcha = (function () {
         this.size = 'normal';
         this.tabindex = 0;
         this.language = null;
-        this.onResponse = new EventEmitter();
-        this.onExpire = new EventEmitter();
+        this.onResponse = new core_1.EventEmitter();
+        this.onExpire = new core_1.EventEmitter();
         this._instance = null;
     }
     Captcha.prototype.ngAfterViewInit = function () {
@@ -67,60 +69,60 @@ var Captcha = (function () {
     return Captcha;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Captcha.prototype, "siteKey", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], Captcha.prototype, "theme", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], Captcha.prototype, "type", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], Captcha.prototype, "size", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], Captcha.prototype, "tabindex", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Captcha.prototype, "language", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], Captcha.prototype, "onResponse", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], Captcha.prototype, "onExpire", void 0);
 __decorate([
-    ViewChild('target'),
-    __metadata("design:type", ElementRef)
+    core_1.ViewChild('target'),
+    __metadata("design:type", core_1.ElementRef)
 ], Captcha.prototype, "el", void 0);
 Captcha = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-captcha',
         template: "<div #target></div>"
     }),
-    __metadata("design:paramtypes", [NgZone])
+    __metadata("design:paramtypes", [core_1.NgZone])
 ], Captcha);
-export { Captcha };
+exports.Captcha = Captcha;
 var CaptchaModule = (function () {
     function CaptchaModule() {
     }
     return CaptchaModule;
 }());
 CaptchaModule = __decorate([
-    NgModule({
-        imports: [CommonModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
         exports: [Captcha],
         declarations: [Captcha]
     })
 ], CaptchaModule);
-export { CaptchaModule };
+exports.CaptchaModule = CaptchaModule;
 //# sourceMappingURL=captcha.js.map

@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,12 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Component, ElementRef, Input, EventEmitter, Renderer, ContentChild, trigger, state, style, transition, animate } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DomHandler } from '../dom/domhandler';
-import { Footer, SharedModule } from '../common/shared';
-import { ButtonModule } from '../button/button';
-import { ConfirmationService } from '../common/api';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var domhandler_1 = require("../dom/domhandler");
+var shared_1 = require("../common/shared");
+var button_1 = require("../button/button");
+var api_1 = require("../common/api");
 var ConfirmDialog = (function () {
     function ConfirmDialog(el, domHandler, renderer, confirmationService) {
         var _this = this;
@@ -38,11 +40,11 @@ var ConfirmDialog = (function () {
                 _this.rejectVisible = _this.confirmation.rejectVisible == null ? _this.rejectVisible : _this.confirmation.rejectVisible;
                 _this.acceptVisible = _this.confirmation.acceptVisible == null ? _this.acceptVisible : _this.confirmation.acceptVisible;
                 if (_this.confirmation.accept) {
-                    _this.confirmation.acceptEvent = new EventEmitter();
+                    _this.confirmation.acceptEvent = new core_1.EventEmitter();
                     _this.confirmation.acceptEvent.subscribe(_this.confirmation.accept);
                 }
                 if (_this.confirmation.reject) {
-                    _this.confirmation.rejectEvent = new EventEmitter();
+                    _this.confirmation.rejectEvent = new core_1.EventEmitter();
                     _this.confirmation.rejectEvent.subscribe(_this.confirmation.reject);
                 }
                 _this.visible = true;
@@ -60,7 +62,7 @@ var ConfirmDialog = (function () {
                     this.center();
                     this.positionInitialized = true;
                 }
-                this.el.nativeElement.children[0].style.zIndex = ++DomHandler.zindex;
+                this.el.nativeElement.children[0].style.zIndex = ++domhandler_1.DomHandler.zindex;
             }
             if (this._visible)
                 this.enableModality();
@@ -81,7 +83,7 @@ var ConfirmDialog = (function () {
         if (this.closeOnEscape && this.closable) {
             this.documentEscapeListener = this.renderer.listenGlobal('body', 'keydown', function (event) {
                 if (event.which == 27) {
-                    if (_this.el.nativeElement.children[0].style.zIndex == DomHandler.zindex) {
+                    if (_this.el.nativeElement.children[0].style.zIndex == domhandler_1.DomHandler.zindex) {
                         _this.hide(event);
                     }
                 }
@@ -133,7 +135,7 @@ var ConfirmDialog = (function () {
         }
     };
     ConfirmDialog.prototype.moveOnTop = function () {
-        this.el.nativeElement.children[0].style.zIndex = ++DomHandler.zindex;
+        this.el.nativeElement.children[0].style.zIndex = ++domhandler_1.DomHandler.zindex;
     };
     ConfirmDialog.prototype.ngOnDestroy = function () {
         this.disableModality();
@@ -165,115 +167,115 @@ var ConfirmDialog = (function () {
     return ConfirmDialog;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], ConfirmDialog.prototype, "header", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], ConfirmDialog.prototype, "icon", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], ConfirmDialog.prototype, "message", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], ConfirmDialog.prototype, "acceptIcon", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], ConfirmDialog.prototype, "acceptLabel", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], ConfirmDialog.prototype, "acceptVisible", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], ConfirmDialog.prototype, "rejectIcon", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], ConfirmDialog.prototype, "rejectLabel", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], ConfirmDialog.prototype, "rejectVisible", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], ConfirmDialog.prototype, "width", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], ConfirmDialog.prototype, "height", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], ConfirmDialog.prototype, "closeOnEscape", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], ConfirmDialog.prototype, "rtl", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], ConfirmDialog.prototype, "closable", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], ConfirmDialog.prototype, "responsive", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], ConfirmDialog.prototype, "appendTo", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], ConfirmDialog.prototype, "key", void 0);
 __decorate([
-    ContentChild(Footer),
+    core_1.ContentChild(shared_1.Footer),
     __metadata("design:type", Object)
 ], ConfirmDialog.prototype, "footer", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean),
     __metadata("design:paramtypes", [Boolean])
 ], ConfirmDialog.prototype, "visible", null);
 ConfirmDialog = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-confirmDialog',
         template: "\n        <div [ngClass]=\"{'ui-dialog ui-confirmdialog ui-widget ui-widget-content ui-corner-all ui-shadow':true,'ui-dialog-rtl':rtl}\" \n            [style.display]=\"visible ? 'block' : 'none'\" [style.width.px]=\"width\" [style.height.px]=\"height\" (mousedown)=\"moveOnTop()\" [@dialogState]=\"visible ? 'visible' : 'hidden'\">\n            <div class=\"ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top\">\n                <span class=\"ui-dialog-title\" *ngIf=\"header\">{{header}}</span>\n                <a *ngIf=\"closable\"  [ngClass]=\"{'ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all':true}\" href=\"#\" role=\"button\" (click)=\"hide($event)\">\n                    <span class=\"fa fa-fw fa-close\"></span>\n                </a>\n            </div>\n            <div class=\"ui-dialog-content ui-widget-content\">\n                <i [class]=\"icon\"></i>\n                <span class=\"ui-confirmdialog-message\">{{message}}</span>\n            </div>\n            <div class=\"ui-dialog-buttonpane ui-widget-content ui-helper-clearfix\" *ngIf=\"footer\">\n                <ng-content select=\"p-footer\"></ng-content>\n            </div>\n            <div class=\"ui-dialog-buttonpane ui-widget-content ui-helper-clearfix\" *ngIf=\"!footer\">\n                <button type=\"button\" pButton [icon]=\"rejectIcon\" [label]=\"rejectLabel\" (click)=\"reject()\" *ngIf=\"rejectVisible\"></button>\n                <button type=\"button\" pButton [icon]=\"acceptIcon\" [label]=\"acceptLabel\" (click)=\"accept()\" *ngIf=\"acceptVisible\"></button>\n            </div>\n        </div>\n    ",
         animations: [
-            trigger('dialogState', [
-                state('hidden', style({
+            core_1.trigger('dialogState', [
+                core_1.state('hidden', core_1.style({
                     opacity: 0
                 })),
-                state('visible', style({
+                core_1.state('visible', core_1.style({
                     opacity: 1
                 })),
-                transition('visible => hidden', animate('400ms ease-in')),
-                transition('hidden => visible', animate('400ms ease-out'))
+                core_1.transition('visible => hidden', core_1.animate('400ms ease-in')),
+                core_1.transition('hidden => visible', core_1.animate('400ms ease-out'))
             ])
         ],
-        providers: [DomHandler]
+        providers: [domhandler_1.DomHandler]
     }),
-    __metadata("design:paramtypes", [ElementRef, DomHandler,
-        Renderer, ConfirmationService])
+    __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler,
+        core_1.Renderer, api_1.ConfirmationService])
 ], ConfirmDialog);
-export { ConfirmDialog };
+exports.ConfirmDialog = ConfirmDialog;
 var ConfirmDialogModule = (function () {
     function ConfirmDialogModule() {
     }
     return ConfirmDialogModule;
 }());
 ConfirmDialogModule = __decorate([
-    NgModule({
-        imports: [CommonModule, ButtonModule],
-        exports: [ConfirmDialog, ButtonModule, SharedModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule, button_1.ButtonModule],
+        exports: [ConfirmDialog, button_1.ButtonModule, shared_1.SharedModule],
         declarations: [ConfirmDialog]
     })
 ], ConfirmDialogModule);
-export { ConfirmDialogModule };
+exports.ConfirmDialogModule = ConfirmDialogModule;
 //# sourceMappingURL=confirmdialog.js.map

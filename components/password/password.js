@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Directive, ElementRef, HostListener, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DomHandler } from '../dom/domhandler';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var domhandler_1 = require("../dom/domhandler");
 var Password = (function () {
     function Password(el, domHandler) {
         this.el = el;
@@ -109,41 +111,41 @@ var Password = (function () {
     return Password;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Password.prototype, "promptLabel", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Password.prototype, "weakLabel", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Password.prototype, "mediumLabel", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Password.prototype, "strongLabel", void 0);
 __decorate([
-    HostListener('focus', ['$event']),
+    core_1.HostListener('focus', ['$event']),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], Password.prototype, "onFocus", null);
 __decorate([
-    HostListener('blur', ['$event']),
+    core_1.HostListener('blur', ['$event']),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], Password.prototype, "onBlur", null);
 __decorate([
-    HostListener('keyup', ['$event']),
+    core_1.HostListener('keyup', ['$event']),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], Password.prototype, "onKeyup", null);
 Password = __decorate([
-    Directive({
+    core_1.Directive({
         selector: '[pPassword]',
         host: {
             '[class.ui-inputtext]': 'true',
@@ -152,22 +154,22 @@ Password = __decorate([
             '[class.ui-widget]': 'true',
             '[class.ui-state-filled]': 'filled'
         },
-        providers: [DomHandler]
+        providers: [domhandler_1.DomHandler]
     }),
-    __metadata("design:paramtypes", [ElementRef, DomHandler])
+    __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
 ], Password);
-export { Password };
+exports.Password = Password;
 var PasswordModule = (function () {
     function PasswordModule() {
     }
     return PasswordModule;
 }());
 PasswordModule = __decorate([
-    NgModule({
-        imports: [CommonModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
         exports: [Password],
         declarations: [Password]
     })
 ], PasswordModule);
-export { PasswordModule };
+exports.PasswordModule = PasswordModule;
 //# sourceMappingURL=password.js.map

@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,17 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Component, ElementRef, Input, Output, EventEmitter, ContentChild, ContentChildren, QueryList, IterableDiffers } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Header, Footer, PrimeTemplate, SharedModule } from '../common/shared';
-import { PaginatorModule } from '../paginator/paginator';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var shared_1 = require("../common/shared");
+var paginator_1 = require("../paginator/paginator");
 var DataGrid = (function () {
     function DataGrid(el, differs) {
         this.el = el;
         this.pageLinks = 5;
-        this.onLazyLoad = new EventEmitter();
+        this.onLazyLoad = new core_1.EventEmitter();
         this.paginatorPosition = 'bottom';
-        this.onPage = new EventEmitter();
+        this.onPage = new core_1.EventEmitter();
         this.first = 0;
         this.page = 0;
         this.differ = differs.find([]).create(null);
@@ -105,84 +107,84 @@ var DataGrid = (function () {
     return DataGrid;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Array)
 ], DataGrid.prototype, "value", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], DataGrid.prototype, "paginator", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Number)
 ], DataGrid.prototype, "rows", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Number)
 ], DataGrid.prototype, "totalRecords", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Number)
 ], DataGrid.prototype, "pageLinks", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Array)
 ], DataGrid.prototype, "rowsPerPageOptions", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], DataGrid.prototype, "lazy", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], DataGrid.prototype, "onLazyLoad", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], DataGrid.prototype, "style", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], DataGrid.prototype, "styleClass", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], DataGrid.prototype, "paginatorPosition", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], DataGrid.prototype, "onPage", void 0);
 __decorate([
-    ContentChild(Header),
+    core_1.ContentChild(shared_1.Header),
     __metadata("design:type", Object)
 ], DataGrid.prototype, "header", void 0);
 __decorate([
-    ContentChild(Footer),
+    core_1.ContentChild(shared_1.Footer),
     __metadata("design:type", Object)
 ], DataGrid.prototype, "footer", void 0);
 __decorate([
-    ContentChildren(PrimeTemplate),
-    __metadata("design:type", QueryList)
+    core_1.ContentChildren(shared_1.PrimeTemplate),
+    __metadata("design:type", core_1.QueryList)
 ], DataGrid.prototype, "templates", void 0);
 DataGrid = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-dataGrid',
         template: "\n        <div [ngClass]=\"'ui-datagrid ui-widget'\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div class=\"ui-datagrid-header ui-widget-header ui-corner-top\" *ngIf=\"header\">\n                <ng-content select=\"p-header\"></ng-content>\n            </div>\n            <p-paginator [rows]=\"rows\" [first]=\"first\" [totalRecords]=\"totalRecords\" [pageLinkSize]=\"pageLinks\" \n                (onPageChange)=\"paginate($event)\" styleClass=\"ui-paginator-bottom\" [rowsPerPageOptions]=\"rowsPerPageOptions\" *ngIf=\"paginator && paginatorPosition!='bottom' || paginatorPosition =='both'\"></p-paginator>\n            <div class=\"ui-datagrid-content ui-widget-content\">\n                <div class=\"ui-g\">\n                    <template ngFor [ngForOf]=\"dataToRender\" [ngForTemplate]=\"itemTemplate\"></template>\n                </div>\n            </div>\n            <p-paginator [rows]=\"rows\" [first]=\"first\" [totalRecords]=\"totalRecords\" [pageLinkSize]=\"pageLinks\" \n                (onPageChange)=\"paginate($event)\" styleClass=\"ui-paginator-bottom\" [rowsPerPageOptions]=\"rowsPerPageOptions\" *ngIf=\"paginator && paginatorPosition!='top' || paginatorPosition =='both'\"></p-paginator>\n            <div class=\"ui-datagrid-footer ui-widget-header ui-corner-top\" *ngIf=\"footer\">\n                <ng-content select=\"p-footer\"></ng-content>\n            </div>\n        </div>\n    "
     }),
-    __metadata("design:paramtypes", [ElementRef, IterableDiffers])
+    __metadata("design:paramtypes", [core_1.ElementRef, core_1.IterableDiffers])
 ], DataGrid);
-export { DataGrid };
+exports.DataGrid = DataGrid;
 var DataGridModule = (function () {
     function DataGridModule() {
     }
     return DataGridModule;
 }());
 DataGridModule = __decorate([
-    NgModule({
-        imports: [CommonModule, SharedModule, PaginatorModule],
-        exports: [DataGrid, SharedModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule, shared_1.SharedModule, paginator_1.PaginatorModule],
+        exports: [DataGrid, shared_1.SharedModule],
         declarations: [DataGrid]
     })
 ], DataGridModule);
-export { DataGridModule };
+exports.DataGridModule = DataGridModule;
 //# sourceMappingURL=datagrid.js.map

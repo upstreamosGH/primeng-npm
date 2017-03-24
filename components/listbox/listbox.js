@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,15 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Component, ElementRef, Input, Output, EventEmitter, ContentChildren, QueryList, forwardRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SharedModule, PrimeTemplate } from '../common/shared';
-import { DomHandler } from '../dom/domhandler';
-import { ObjectUtils } from '../utils/ObjectUtils';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-export var LISTBOX_VALUE_ACCESSOR = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(function () { return Listbox; }),
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var shared_1 = require("../common/shared");
+var domhandler_1 = require("../dom/domhandler");
+var ObjectUtils_1 = require("../utils/ObjectUtils");
+var forms_1 = require("@angular/forms");
+exports.LISTBOX_VALUE_ACCESSOR = {
+    provide: forms_1.NG_VALUE_ACCESSOR,
+    useExisting: core_1.forwardRef(function () { return Listbox; }),
     multi: true
 };
 var Listbox = (function () {
@@ -26,8 +28,8 @@ var Listbox = (function () {
         this.checkbox = false;
         this.filter = false;
         this.metaKeySelection = true;
-        this.onChange = new EventEmitter();
-        this.onDblClick = new EventEmitter();
+        this.onChange = new core_1.EventEmitter();
+        this.onDblClick = new core_1.EventEmitter();
         this.onModelChange = function () { };
         this.onModelTouched = function () { };
     }
@@ -264,69 +266,69 @@ var Listbox = (function () {
     return Listbox;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Array)
 ], Listbox.prototype, "options", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], Listbox.prototype, "multiple", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], Listbox.prototype, "style", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Listbox.prototype, "styleClass", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], Listbox.prototype, "disabled", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], Listbox.prototype, "checkbox", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], Listbox.prototype, "filter", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], Listbox.prototype, "metaKeySelection", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], Listbox.prototype, "onChange", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], Listbox.prototype, "onDblClick", void 0);
 __decorate([
-    ContentChildren(PrimeTemplate),
-    __metadata("design:type", QueryList)
+    core_1.ContentChildren(shared_1.PrimeTemplate),
+    __metadata("design:type", core_1.QueryList)
 ], Listbox.prototype, "templates", void 0);
 Listbox = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-listbox',
         template: "\n        <div [ngClass]=\"{'ui-listbox ui-inputtext ui-widget ui-widget-content ui-corner-all':true,'ui-state-disabled':disabled}\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div class=\"ui-widget-header ui-corner-all ui-listbox-header ui-helper-clearfix\" *ngIf=\"(checkbox && multiple) || filter\">\n                <div class=\"ui-chkbox ui-widget\" *ngIf=\"checkbox && multiple\">\n                    <div class=\"ui-helper-hidden-accessible\">\n                        <input #cb type=\"checkbox\" readonly=\"readonly\" [checked]=\"isAllChecked()\">\n                    </div>\n                    <div class=\"ui-chkbox-box ui-widget ui-corner-all ui-state-default\" [ngClass]=\"{'ui-state-active':isAllChecked()}\" (click)=\"toggleAll($event,cb)\">\n                        <span class=\"ui-chkbox-icon ui-c\" [ngClass]=\"{'fa fa-check':isAllChecked()}\"></span>\n                    </div>\n                </div>\n                <div class=\"ui-listbox-filter-container\" *ngIf=\"filter\">\n                    <input type=\"text\" role=\"textbox\" (input)=\"onFilter($event)\" class=\"ui-inputtext ui-widget ui-state-default ui-corner-all\" [disabled]=\"disabled\">\n                    <span class=\"fa fa-search\"></span>\n                </div>\n            </div>\n            <ul class=\"ui-listbox-list\">\n                <li *ngFor=\"let option of options\" [style.display]=\"isItemVisible(option) ? 'block' : 'none'\"\n                    [ngClass]=\"{'ui-listbox-item ui-corner-all':true,'ui-state-highlight':isSelected(option)}\"\n                    (click)=\"onOptionClick($event,option)\" (dblclick)=\"onDoubleClick($event,option)\" (touchend)=\"onOptionTouchEnd($event,option)\">\n                    <div class=\"ui-chkbox ui-widget\" *ngIf=\"checkbox && multiple\" (click)=\"onCheckboxClick($event,option)\">\n                        <div class=\"ui-helper-hidden-accessible\">\n                            <input type=\"checkbox\" [checked]=\"isSelected(option)\">\n                        </div>\n                        <div class=\"ui-chkbox-box ui-widget ui-corner-all ui-state-default\" [ngClass]=\"{'ui-state-active':isSelected(option)}\">\n                            <span class=\"ui-chkbox-icon ui-c\" [ngClass]=\"{'fa fa-check':isSelected(option)}\"></span>\n                        </div>\n                    </div>\n                    <span *ngIf=\"!itemTemplate\">{{option.label}}</span>\n                    <template *ngIf=\"itemTemplate\" [pTemplateWrapper]=\"itemTemplate\" [item]=\"option\"></template>\n                </li>\n            </ul>\n        </div>\n    ",
-        providers: [DomHandler, ObjectUtils, LISTBOX_VALUE_ACCESSOR]
+        providers: [domhandler_1.DomHandler, ObjectUtils_1.ObjectUtils, exports.LISTBOX_VALUE_ACCESSOR]
     }),
-    __metadata("design:paramtypes", [ElementRef, DomHandler, ObjectUtils])
+    __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, ObjectUtils_1.ObjectUtils])
 ], Listbox);
-export { Listbox };
+exports.Listbox = Listbox;
 var ListboxModule = (function () {
     function ListboxModule() {
     }
     return ListboxModule;
 }());
 ListboxModule = __decorate([
-    NgModule({
-        imports: [CommonModule, SharedModule],
-        exports: [Listbox, SharedModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule, shared_1.SharedModule],
+        exports: [Listbox, shared_1.SharedModule],
         declarations: [Listbox]
     })
 ], ListboxModule);
-export { ListboxModule };
+exports.ListboxModule = ListboxModule;
 //# sourceMappingURL=listbox.js.map

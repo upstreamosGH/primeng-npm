@@ -1,6 +1,5 @@
 import { EventEmitter } from '@angular/core';
 export declare class Paginator {
-    rows: number;
     pageLinkSize: number;
     onPageChange: EventEmitter<any>;
     style: any;
@@ -9,8 +8,10 @@ export declare class Paginator {
     pageLinks: number[];
     _totalRecords: number;
     _first: number;
+    _rows: number;
     totalRecords: number;
     first: number;
+    rows: number;
     isFirstPage(): boolean;
     isLastPage(): boolean;
     getPageCount(): number;

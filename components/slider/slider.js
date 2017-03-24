@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,13 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Component, ElementRef, Input, Output, EventEmitter, forwardRef, Renderer } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DomHandler } from '../dom/domhandler';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-export var SLIDER_VALUE_ACCESSOR = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(function () { return Slider; }),
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var domhandler_1 = require("../dom/domhandler");
+var forms_1 = require("@angular/forms");
+exports.SLIDER_VALUE_ACCESSOR = {
+    provide: forms_1.NG_VALUE_ACCESSOR,
+    useExisting: core_1.forwardRef(function () { return Slider; }),
     multi: true
 };
 var Slider = (function () {
@@ -24,8 +26,8 @@ var Slider = (function () {
         this.min = 0;
         this.max = 100;
         this.orientation = 'horizontal';
-        this.onChange = new EventEmitter();
-        this.onSlideEnd = new EventEmitter();
+        this.onChange = new core_1.EventEmitter();
+        this.onSlideEnd = new core_1.EventEmitter();
         this.handleValues = [];
         this.onModelChange = function () { };
         this.onModelTouched = function () { };
@@ -199,69 +201,69 @@ var Slider = (function () {
     return Slider;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], Slider.prototype, "animate", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], Slider.prototype, "disabled", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Number)
 ], Slider.prototype, "min", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Number)
 ], Slider.prototype, "max", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Slider.prototype, "orientation", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Number)
 ], Slider.prototype, "step", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], Slider.prototype, "range", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], Slider.prototype, "style", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Slider.prototype, "styleClass", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], Slider.prototype, "onChange", void 0);
 __decorate([
-    Output(),
-    __metadata("design:type", EventEmitter)
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
 ], Slider.prototype, "onSlideEnd", void 0);
 Slider = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-slider',
         template: "\n        <div [ngStyle]=\"style\" [class]=\"styleClass\" [ngClass]=\"{'ui-slider ui-widget ui-widget-content ui-corner-all':true,'ui-state-disabled':disabled,\n            'ui-slider-horizontal':orientation == 'horizontal','ui-slider-vertical':orientation == 'vertical','ui-slider-animate':animate}\"\n            (click)=\"onBarClick($event)\">\n            <span *ngIf=\"!range\" class=\"ui-slider-handle ui-state-default ui-corner-all\" (mousedown)=\"onMouseDown($event)\" [style.transition]=\"dragging ? 'none': null\"\n                [ngStyle]=\"{'left': orientation == 'horizontal' ? handleValue + '%' : null,'bottom': orientation == 'vertical' ? handleValue + '%' : null}\"></span>\n            <span *ngIf=\"range\" class=\"ui-slider-range ui-widget-header ui-corner-all\" [ngStyle]=\"{'left':handleValues[0] + '%',width: (handleValues[1] - handleValues[0] + '%')}\"></span>\n            <span *ngIf=\"orientation=='vertical'\" class=\"ui-slider-range ui-slider-range-min ui-widget-header ui-corner-all\" [ngStyle]=\"{'height': handleValue + '%'}\"></span>\n            <span *ngIf=\"range\" (mousedown)=\"onMouseDown($event,0)\" [style.transition]=\"dragging ? 'none': null\" class=\"ui-slider-handle ui-state-default ui-corner-all\" \n                [ngStyle]=\"{'left':handleValues[0] + '%'}\" [ngClass]=\"{'ui-slider-handle-active':handleIndex==0}\"></span>\n            <span *ngIf=\"range\" (mousedown)=\"onMouseDown($event,1)\" [style.transition]=\"dragging ? 'none': null\" class=\"ui-slider-handle ui-state-default ui-corner-all\" \n                [ngStyle]=\"{'left':handleValues[1] + '%'}\" [ngClass]=\"{'ui-slider-handle-active':handleIndex==1}\"></span>\n        </div>\n    ",
-        providers: [SLIDER_VALUE_ACCESSOR, DomHandler]
+        providers: [exports.SLIDER_VALUE_ACCESSOR, domhandler_1.DomHandler]
     }),
-    __metadata("design:paramtypes", [ElementRef, DomHandler, Renderer])
+    __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer])
 ], Slider);
-export { Slider };
+exports.Slider = Slider;
 var SliderModule = (function () {
     function SliderModule() {
     }
     return SliderModule;
 }());
 SliderModule = __decorate([
-    NgModule({
-        imports: [CommonModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
         exports: [Slider],
         declarations: [Slider]
     })
 ], SliderModule);
-export { SliderModule };
+exports.SliderModule = SliderModule;
 //# sourceMappingURL=slider.js.map

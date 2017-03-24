@@ -1,40 +1,57 @@
 {
-  "name": "primeng",
-  "version": "4.0.0-rc.2-SNAPSHOT",
-  "scripts": {
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "webpack": "webpack",
-    "webpack:w": "webpack -w",
-    "webpack-dev-server": "webpack-dev-server --inline",
-    "build-prod": "webpack --config config/webpack.prod.js",
-    "build-dev": "webpack --config config/webpack.dev.js",
-    "start": "npm run webpack-dev-server",
-    "ngc": "ngc -p ./tsconfig-aot.json"
+  "_args": [
+    [
+      {
+        "raw": "primeng@^2.0.5",
+        "scope": null,
+        "escapedName": "primeng",
+        "name": "primeng",
+        "rawSpec": "^2.0.5",
+        "spec": ">=2.0.5 <3.0.0",
+        "type": "range"
+      },
+      "C:\\SmartCare\\CareMed\\Angular\\Client"
+    ]
+  ],
+  "_from": "primeng@>=2.0.5 <3.0.0",
+  "_id": "primeng@2.0.5",
+  "_inCache": true,
+  "_location": "/primeng",
+  "_nodeVersion": "7.7.1",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/primeng-2.0.5.tgz_1490104550397_0.6716119383927435"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/primefaces/primeng.git"
+  "_npmUser": {
+    "name": "cagatay.civici",
+    "email": "cagatay.civici@gmail.com"
   },
-  "license": "MIT",
-  "dependencies": {
-    "@angular/animations": "4.0.0-rc.3",
-    "@angular/common": "4.0.0-rc.3",
-    "@angular/compiler": "4.0.0-rc.3",
-    "@angular/compiler-cli": "^2.4.10",
-    "@angular/core": "4.0.0-rc.3",
-    "@angular/forms": "4.0.0-rc.3",
-    "@angular/http": "4.0.0-rc.3",
-    "@angular/platform-browser": "4.0.0-rc.3",
-    "@angular/platform-browser-dynamic": "4.0.0-rc.3",
-    "@angular/platform-server": "^2.4.10",
-    "@angular/router": "4.0.0-rc.3",
-    "core-js": "^2.4.1",
-    "rxjs": "^5.2.0",
-    "zone.js": "^0.7.7"
+  "_npmVersion": "4.1.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "primeng@^2.0.5",
+    "scope": null,
+    "escapedName": "primeng",
+    "name": "primeng",
+    "rawSpec": "^2.0.5",
+    "spec": ">=2.0.5 <3.0.0",
+    "type": "range"
   },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/primeng/-/primeng-2.0.5.tgz",
+  "_shasum": "24e1e3dc820c2f04dc69c9fb0ff7080ddedf4c21",
+  "_shrinkwrap": null,
+  "_spec": "primeng@^2.0.5",
+  "_where": "C:\\SmartCare\\CareMed\\Angular\\Client",
+  "bugs": {
+    "url": "https://github.com/primefaces/primeng/issues"
+  },
+  "dependencies": {},
+  "description": "UI Components for Angular 2",
   "devDependencies": {
-    "@types/node": "^7.0.5",
+    "@types/node": "^6.0.45",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
@@ -43,10 +60,41 @@
     "gulp-uglify": "^1.5.3",
     "gulp-uglifycss": "^1.0.6",
     "ts-loader": "^0.9.5",
-    "typescript": "^2.1.6",
-    "html-webpack-plugin": "^2.16.1",
-    "webpack": "2.2.1",
-    "webpack-dev-server": "2.4.1",
-    "webpack-merge": "^3.0.0"
-  }
+    "typescript": "^2.0.3",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-merge": "^0.14.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "24e1e3dc820c2f04dc69c9fb0ff7080ddedf4c21",
+    "tarball": "https://registry.npmjs.org/primeng/-/primeng-2.0.5.tgz"
+  },
+  "gitHead": "fdaf1d7794f585e4634ab6c5ba90a2cddd556e78",
+  "homepage": "https://github.com/primefaces/primeng#readme",
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "cagatay.civici",
+      "email": "cagatay.civici@gmail.com"
+    }
+  ],
+  "name": "primeng",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/primefaces/primeng.git"
+  },
+  "scripts": {
+    "build-dev": "webpack --config config/webpack.dev.js",
+    "build-prod": "webpack --config config/webpack.prod.js",
+    "start": "npm run webpack-dev-server",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "webpack": "webpack",
+    "webpack-dev-server": "webpack-dev-server --inline",
+    "webpack:w": "webpack -w"
+  },
+  "version": "2.0.5"
 }

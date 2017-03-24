@@ -14,6 +14,7 @@ export interface LazyLoadEvent {
     filters?: {
         [s: string]: FilterMetadata;
     };
+    globalFilter?: any;
 }
 export interface FilterMetadata {
     value?: any;
@@ -57,6 +58,7 @@ export interface TreeNode {
 }
 export interface Confirmation {
     message: string;
+    key?: string;
     icon?: string;
     header?: string;
     accept?: Function;

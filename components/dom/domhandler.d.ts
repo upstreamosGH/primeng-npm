@@ -32,7 +32,6 @@ export declare class DomHandler {
         left: any;
         top: any;
     };
-    equals(obj1: any, obj2: any): boolean;
     getUserAgent(): string;
     isIE(): boolean;
     appendChild(element: any, target: any): void;

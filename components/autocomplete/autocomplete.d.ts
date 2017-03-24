@@ -1,11 +1,13 @@
 import { ElementRef, AfterViewInit, AfterViewChecked, DoCheck, EventEmitter, QueryList, TemplateRef, IterableDiffers, Renderer } from '@angular/core';
 import { DomHandler } from '../dom/domhandler';
+import { ObjectUtils } from '../utils/ObjectUtils';
 import { ControlValueAccessor } from '@angular/forms';
 export declare const AUTOCOMPLETE_VALUE_ACCESSOR: any;
 export declare class AutoComplete implements AfterViewInit, DoCheck, AfterViewChecked, ControlValueAccessor {
     el: ElementRef;
     domHandler: DomHandler;
     renderer: Renderer;
+    objectUtils: ObjectUtils;
     minLength: number;
     delay: number;
     style: any;
@@ -22,6 +24,7 @@ export declare class AutoComplete implements AfterViewInit, DoCheck, AfterViewCh
     completeMethod: EventEmitter<any>;
     onSelect: EventEmitter<any>;
     onUnselect: EventEmitter<any>;
+    onFocus: EventEmitter<any>;
     onDropdownClick: EventEmitter<any>;
     field: string;
     scrollHeight: string;
@@ -30,6 +33,7 @@ export declare class AutoComplete implements AfterViewInit, DoCheck, AfterViewCh
     tabindex: number;
     templates: QueryList<any>;
     itemTemplate: TemplateRef<any>;
+    selectedItemTemplate: TemplateRef<any>;
     value: any;
     onModelChange: Function;
     onModelTouched: Function;
@@ -47,7 +51,7 @@ export declare class AutoComplete implements AfterViewInit, DoCheck, AfterViewCh
     dropdownFocus: boolean;
     filled: boolean;
     inputEL: ElementRef;
-    constructor(el: ElementRef, domHandler: DomHandler, differs: IterableDiffers, renderer: Renderer);
+    constructor(el: ElementRef, domHandler: DomHandler, differs: IterableDiffers, renderer: Renderer, objectUtils: ObjectUtils);
     ngDoCheck(): void;
     ngAfterContentInit(): void;
     ngAfterViewInit(): void;
@@ -64,9 +68,8 @@ export declare class AutoComplete implements AfterViewInit, DoCheck, AfterViewCh
     hide(): void;
     handleDropdownClick(event: any): void;
     removeItem(item: any): void;
-    resolveFieldData(data: any): any;
     onKeydown(event: any): void;
-    onFocus(): void;
+    onInputFocus(event: any): void;
     onBlur(): void;
     onDropdownFocus(): void;
     onDropdownBlur(): void;

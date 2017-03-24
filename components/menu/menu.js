@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Component, ElementRef, Input, Renderer, EventEmitter, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DomHandler } from '../dom/domhandler';
-import { Router } from '@angular/router';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var domhandler_1 = require("../dom/domhandler");
+var router_1 = require("@angular/router");
 var Menu = (function () {
     function Menu(el, domHandler, renderer, router) {
         this.el = el;
@@ -68,7 +70,7 @@ var Menu = (function () {
         }
         if (item.command) {
             if (!item.eventEmitter) {
-                item.eventEmitter = new EventEmitter();
+                item.eventEmitter = new core_1.EventEmitter();
                 item.eventEmitter.subscribe(item.command);
             }
             item.eventEmitter.emit({
@@ -124,50 +126,50 @@ var Menu = (function () {
     return Menu;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Array)
 ], Menu.prototype, "model", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Boolean)
 ], Menu.prototype, "popup", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], Menu.prototype, "style", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Menu.prototype, "styleClass", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", Object)
 ], Menu.prototype, "appendTo", void 0);
 __decorate([
-    ViewChild('container'),
-    __metadata("design:type", ElementRef)
+    core_1.ViewChild('container'),
+    __metadata("design:type", core_1.ElementRef)
 ], Menu.prototype, "containerViewChild", void 0);
 Menu = __decorate([
-    Component({
+    core_1.Component({
         selector: 'p-menu',
         template: "\n        <div #container [ngClass]=\"{'ui-menu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix':true,'ui-menu-dynamic ui-shadow':popup}\" \n            [class]=\"styleClass\" [ngStyle]=\"style\" (click)=\"preventDocumentDefault=true\">\n            <ul class=\"ui-menu-list ui-helper-reset\">\n                <template ngFor let-submenu [ngForOf]=\"model\" *ngIf=\"hasSubMenu()\">\n                    <li class=\"ui-widget-header ui-corner-all\"><h3>{{submenu.label}}</h3></li>\n                    <li *ngFor=\"let item of submenu.items\" class=\"ui-menuitem ui-widget ui-corner-all\">\n                        <a [href]=\"item.url||'#'\" class=\"ui-menuitem-link ui-corner-all\" [attr.target]=\"item.target\"\n                            [ngClass]=\"{'ui-state-disabled':item.disabled}\" (click)=\"itemClick($event, item)\">\n                            <span class=\"ui-menuitem-icon fa fa-fw\" *ngIf=\"item.icon\" [ngClass]=\"item.icon\"></span>\n                            <span class=\"ui-menuitem-text\">{{item.label}}</span>\n                        </a>\n                    </li>\n                </template>\n                <template ngFor let-item [ngForOf]=\"model\" *ngIf=\"!hasSubMenu()\">\n                    <li class=\"ui-menuitem ui-widget ui-corner-all\">\n                        <a [href]=\"item.url||'#'\" class=\"ui-menuitem-link ui-corner-all\" [attr.target]=\"item.target\"\n                            [ngClass]=\"{'ui-state-disabled':item.disabled}\" (click)=\"itemClick($event, item)\">\n                            <span class=\"ui-menuitem-icon fa fa-fw\" *ngIf=\"item.icon\" [ngClass]=\"item.icon\"></span>\n                            <span class=\"ui-menuitem-text\">{{item.label}}</span>\n                        </a>\n                    </li>\n                </template>\n            </ul>\n        </div>\n    ",
-        providers: [DomHandler],
+        providers: [domhandler_1.DomHandler],
         host: { '(window:resize)': 'onResize($event)' }
     }),
-    __metadata("design:paramtypes", [ElementRef, DomHandler, Renderer, Router])
+    __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer, router_1.Router])
 ], Menu);
-export { Menu };
+exports.Menu = Menu;
 var MenuModule = (function () {
     function MenuModule() {
     }
     return MenuModule;
 }());
 MenuModule = __decorate([
-    NgModule({
-        imports: [CommonModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
         exports: [Menu],
         declarations: [Menu]
     })
 ], MenuModule);
-export { MenuModule };
+exports.MenuModule = MenuModule;
 //# sourceMappingURL=menu.js.map

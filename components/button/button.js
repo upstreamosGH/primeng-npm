@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { NgModule, Directive, ElementRef, Input } from '@angular/core';
-import { DomHandler } from '../dom/domhandler';
-import { CommonModule } from '@angular/common';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var domhandler_1 = require("../dom/domhandler");
+var common_1 = require("@angular/common");
 var Button = (function () {
     function Button(el, domHandler) {
         this.el = el;
@@ -85,42 +87,42 @@ var Button = (function () {
     return Button;
 }());
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Button.prototype, "iconPos", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String)
 ], Button.prototype, "cornerStyleClass", void 0);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String),
     __metadata("design:paramtypes", [String])
 ], Button.prototype, "label", null);
 __decorate([
-    Input(),
+    core_1.Input(),
     __metadata("design:type", String),
     __metadata("design:paramtypes", [String])
 ], Button.prototype, "icon", null);
 Button = __decorate([
-    Directive({
+    core_1.Directive({
         selector: '[pButton]',
-        providers: [DomHandler]
+        providers: [domhandler_1.DomHandler]
     }),
-    __metadata("design:paramtypes", [ElementRef, DomHandler])
+    __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
 ], Button);
-export { Button };
+exports.Button = Button;
 var ButtonModule = (function () {
     function ButtonModule() {
     }
     return ButtonModule;
 }());
 ButtonModule = __decorate([
-    NgModule({
-        imports: [CommonModule],
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
         exports: [Button],
         declarations: [Button]
     })
 ], ButtonModule);
-export { ButtonModule };
+exports.ButtonModule = ButtonModule;
 //# sourceMappingURL=button.js.map

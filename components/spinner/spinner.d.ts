@@ -17,6 +17,7 @@ export declare class Spinner implements OnInit, ControlValueAccessor {
     decimalSeparator: string;
     thousandSeparator: string;
     tabindex: number;
+    formatInput: boolean;
     value: number;
     valueAsString: string;
     onModelChange: Function;
